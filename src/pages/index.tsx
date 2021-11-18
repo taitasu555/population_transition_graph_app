@@ -7,10 +7,7 @@ import { APIURL } from '../common/const'
 import axios from 'axios'
 import { PrefecturesList } from '../components/List/PrefecturesList'
 import { Footer } from '../components/Footer/Footer'
-
-type Headers = {
-  'X-API-KEY': any
-}
+import { Headers } from '../types/types'
 
 const Home: NextPage = () => {
   const headers: Headers = {

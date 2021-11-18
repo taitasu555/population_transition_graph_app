@@ -1,11 +1,7 @@
+import { Headers } from './../types/types'
 import { APIURL } from '../common/const'
 import axios from 'axios'
 
-type Headers = {
-  'X-API-KEY': any
-}
-
-// prefectureCodeが変更されたら、非同期処理を実行する
 const headers: Headers = {
   'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY,
 }

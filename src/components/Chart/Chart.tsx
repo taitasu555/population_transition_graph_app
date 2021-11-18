@@ -8,8 +8,8 @@ type Props = {
         year: number
         value: number
       }[]
-  | any,
-  prefName: string,
+    | any
+  prefName: string
 }
 export const Chart: FC<Props> = (props) => {
   const { populationData, prefName } = props
@@ -21,7 +21,6 @@ export const Chart: FC<Props> = (props) => {
       Date.push(data.year.toString())
     })
   }
-  console.log(populationData)
   const options: Highcharts.Options = {
     title: {
       text: '総人口推移グラフ',
