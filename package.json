@@ -5,12 +5,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --env=jsdom --verbose"
   },
   "dependencies": {
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.2",
     "axios": "^0.24.0",
+    "babel-jest": "^27.3.1",
     "highcharts": "^9.3.1",
     "highcharts-react-official": "^3.1.0",
+    "jest": "^27.3.1",
+    "jest-css-modules": "^2.1.0",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -24,5 +33,14 @@
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.4.1",
     "typescript": "4.4.4"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }
