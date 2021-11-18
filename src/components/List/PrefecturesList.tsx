@@ -16,14 +16,18 @@ type Headers = {
 // TODO useMemo, useCallbackが必要なコンポーネント
 export const PrefecturesList: FC<Props> = (props) => {
   const { prefectures } = props
-  const [prefectureCode, setPrefectureCode] = useState<string>('1')
+  const [prefectureCode, setPrefectureCode] = useState<number>(1)
   const [populationData, setPopulationData] = useState<{}>({})
-  const getPrefCode: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setPrefectureCode(e.target.value)
-  }
+  const [prefectureName, setPrefectureName] = useState<string>('北海道')
+
   // prefectureCodeが変更されたら、非同期処理を実行する
   const headers: Headers = {
     'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY,
+  }
+
+  const getPrefCodeAndName = (prefCode: number, prefName: string) => {
+    setPrefectureCode(prefCode)
+    setPrefectureName(prefName)
   }
 
   useEffect(() => {
@@ -35,11 +39,11 @@ export const PrefecturesList: FC<Props> = (props) => {
         }
       )
       setPopulationData(response.data.result.data[0].data)
+      console.log(response.data)
     }
     fetcher()
   }, [prefectureCode])
 
-  console.log(populationData)
   return (
     <>
       <div className={styles.container}>
@@ -49,9 +53,9 @@ export const PrefecturesList: FC<Props> = (props) => {
               <label>
                 <input
                   type="checkbox"
-                  onChange={getPrefCode}
+                  onChange={() => getPrefCodeAndName(pref.prefCode, pref.prefName)}
                   value={pref.prefCode}
-                  checked={prefectureCode == pref.prefCode.toString()}
+                  checked={prefectureCode == pref.prefCode}
                 />
                 {pref.prefName}
               </label>
@@ -60,7 +64,7 @@ export const PrefecturesList: FC<Props> = (props) => {
         })}
       </div>
       <div>
-        <Chart populationData={populationData} />
+        <Chart populationData={populationData} prefName={prefectureName} />
       </div>
     </>
   )
