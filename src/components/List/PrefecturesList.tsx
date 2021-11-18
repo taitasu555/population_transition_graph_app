@@ -3,6 +3,7 @@ import { prefecture } from '../../types/prefecture'
 import styles from '../../styles/components/prefectureList.module.css'
 import { APIURL } from '../../common/const'
 import axios from 'axios'
+import { Chart } from '../Chart/Chart'
 
 type Props = {
   prefectures: prefecture[]
@@ -15,7 +16,8 @@ type Headers = {
 // TODO useMemo, useCallbackが必要なコンポーネント
 export const PrefecturesList: FC<Props> = (props) => {
   const { prefectures } = props
-  const [prefectureCode, setPrefectureCode] = useState<string>()
+  const [prefectureCode, setPrefectureCode] = useState<string>('1')
+  const [populationData, setPopulationData] = useState<{}>({})
   const getPrefCode: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setPrefectureCode(e.target.value)
   }
@@ -23,36 +25,43 @@ export const PrefecturesList: FC<Props> = (props) => {
   const headers: Headers = {
     'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY,
   }
+
   useEffect(() => {
     const fetcher = async () => {
-      const { data } = await axios.get(
-        `${APIURL}/api/v1/population/composition/perYear??cityCode=-&prefCode=${prefectureCode}`,
+      const response = await axios.get(
+        `${APIURL}/api/v1/population/composition/perYear?cityCode=-&prefCode=${prefectureCode}`,
         {
           headers,
         }
       )
-      console.log(data)
+      setPopulationData(response.data.result.data[0].data)
     }
     fetcher()
   }, [prefectureCode])
+
+  console.log(populationData)
   return (
-    <div className={styles.container}>
-      {prefectures.map((pref) => {
-        return (
-          <div className={styles.PrefList} key={pref.prefCode}>
-            <label>
-              <input
-                type="checkbox"
-                onChange={getPrefCode}
-                value={pref.prefCode}
-                checked={prefectureCode == pref.prefCode.toString()}
-              />
-              {pref.prefName}
-            </label>
-          </div>
-        )
-      })}
-      {prefectureCode}
-    </div>
+    <>
+      <div className={styles.container}>
+        {prefectures.map((pref) => {
+          return (
+            <div className={styles.PrefList} key={pref.prefCode}>
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={getPrefCode}
+                  value={pref.prefCode}
+                  checked={prefectureCode == pref.prefCode.toString()}
+                />
+                {pref.prefName}
+              </label>
+            </div>
+          )
+        })}
+      </div>
+      <div>
+        <Chart populationData={populationData} />
+      </div>
+    </>
   )
 }
