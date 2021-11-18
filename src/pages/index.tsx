@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { useState } from 'react'
+import React from 'react'
 import { Header } from '../components/Header/Header'
 import styles from '../styles/Home.module.css'
 import useSWR from 'swr'
