@@ -8,25 +8,40 @@ type Props = {
         year: number
         value: number
       }[]
-    | any
+  | any,
+  prefName: string,
 }
 export const Chart: FC<Props> = (props) => {
-  const { populationData } = props
-  const newData: Array<number> = []
+  const { populationData, prefName } = props
+  const populationValue: Array<number> = []
+  const Date: Array<string> = []
   if (populationData.length > 0) {
     populationData.forEach((data: { year: number; value: number }) => {
-      newData.push(data.value)
+      populationValue.push(data.value)
+      Date.push(data.year.toString())
     })
   }
-
+  console.log(populationData)
   const options: Highcharts.Options = {
     title: {
-      text: 'My chart',
+      text: '総人口推移グラフ',
+    },
+    xAxis: {
+      title: {
+        text: '年度',
+      },
+      categories: Date,
+    },
+    yAxis: {
+      title: {
+        text: '人口数',
+      },
     },
     series: [
       {
         type: 'line',
-        data: newData,
+        name: prefName,
+        data: populationValue,
       },
     ],
   }
