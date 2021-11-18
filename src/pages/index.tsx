@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import React, { useState } from 'react'
-import Image from 'next/image'
 import { Header } from '../components/Header/Header'
 import styles from '../styles/Home.module.css'
 import useSWR from 'swr'
 import { APIURL } from '../common/const'
 import axios from 'axios'
 import { PrefecturesList } from '../components/List/PrefecturesList'
+import { Footer } from '../components/Footer/Footer'
 
 type Headers = {
   'X-API-KEY': any
@@ -28,19 +28,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <PrefecturesList prefectures={data.result} />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }

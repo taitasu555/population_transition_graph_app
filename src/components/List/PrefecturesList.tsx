@@ -63,7 +63,7 @@ export const PrefecturesList: FC<Props> = (props) => {
           )
         })}
       </div>
-      <div>
+      <div className={styles.chart}>
         <Chart populationData={populationData} prefName={prefectureName} />
       </div>
     </>
