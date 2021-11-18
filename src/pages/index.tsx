@@ -20,8 +20,8 @@ const Home: NextPage = () => {
     await axios.get(url, { headers: headers }).then((res) => res.data)
 
   const { data, error } = useSWR(`${APIURL}/api/v1/prefectures`, fetcher)
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>Loading now...</div>
+  if (error) return <div className={styles.caution}>failed to load</div>
+  if (!data) return <div className={styles.caution}>Loading now...</div>
   return (
     <div>
       <Header title={'都道府県人口推移グラフ'} />

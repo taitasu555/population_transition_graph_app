@@ -17,3 +17,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.caution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  min-height: 100vh;
+}
