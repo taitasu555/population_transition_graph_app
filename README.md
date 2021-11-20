@@ -1,34 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+最初にアイキャッチ画像などを表示
 
-## Getting Started
+# リポジトリ名
+このソフトはどんなもので、何ができるのかを書く
+合わせて、簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示
 
-First, run the development server:
+## Dependency
+使用言語とバージョン、必要なライブラリとそのバージョンを書く
+Pythonならrequirements.txtを用意するのも良い
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Setup
+セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+使い方。なるべく具体的に書く。サンプルも書く
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## License
+This software is released under the MIT License, see LICENSE.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Authors
+作者を明示する。特に、他者が作成したコードを利用する場合は、そのコードのライセンスに従った上で、リポジトリのそれぞれのコードのオリジナルの作者が誰か分かるように明示する（私はそれが良いと思い自主的にしています）。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## References
+参考にした情報源（サイト・論文）などの情報、リンク
