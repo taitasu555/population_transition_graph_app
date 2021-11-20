@@ -3,11 +3,10 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 type Props = {
-  populationData:
-    | {
-        year: string
-        value: number
-      }[]
+  populationData: {
+    year: string
+    value: number
+  }[]
   prefName: string
 }
 export const Chart: FC<Props> = (props) => {

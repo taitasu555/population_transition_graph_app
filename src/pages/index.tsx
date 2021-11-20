@@ -15,7 +15,6 @@ const Home: NextPage = () => {
       setPrefectures(data)
     })()
   }, [])
-  console.log(prefectures)
   return (
     <div>
       <Header title={'都道府県人口推移グラフ'} />

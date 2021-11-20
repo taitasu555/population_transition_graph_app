@@ -8,17 +8,22 @@ type Props = {
   prefectures: PrefectureType[]
 }
 
+type PopulationDataType = {
+  year: string
+  value: number
+}
+
+// eslint-disable-next-line react/display-name
 export const PrefecturesList: FC<Props> = memo((props) => {
   const { prefectures } = props
   const [prefectureCode, setPrefectureCode] = useState<number>(1)
-  const [populationData, setPopulationData] = useState<{}>({})
+  const [populationData, setPopulationData] = useState<PopulationDataType[]>([])
   const [prefectureName, setPrefectureName] = useState<string>('北海道')
 
   const getPrefCodeAndName = (prefCode: number, prefName: string) => {
     setPrefectureCode(prefCode)
     setPrefectureName(prefName)
   }
-
   useEffect(() => {
     ;(async () => {
       const fetcherData = await getChart(prefectureCode)
