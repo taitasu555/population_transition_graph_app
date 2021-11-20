@@ -5,9 +5,10 @@ import styles from '../styles/Home.module.css'
 import { PrefecturesList } from '../components/List/PrefecturesList'
 import { Footer } from '../components/Footer/Footer'
 import { getPrefectures } from '../lib/fetch'
+import { PrefectureType } from '../types/types'
 
 const Home: NextPage = () => {
-  const [prefectures, setPrefectures] = useState<any>([])
+  const [prefectures, setPrefectures] = useState<PrefectureType[]>([])
   useEffect(() => {
     ;(async () => {
       const data = await getPrefectures()
