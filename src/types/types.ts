@@ -1,8 +1,8 @@
-export type prefecture = {
+export type PrefectureType = {
   prefCode: number
   prefName: string
 }
 
-export type Headers = {
+export type HeadersTypes = {
   'X-API-KEY'?: string
 }

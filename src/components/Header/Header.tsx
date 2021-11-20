@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
-import styles from '../../styles/components/header.module.css'
+import styles from '../../styles/Home.module.css'
 
 type Props = {
   title: string
