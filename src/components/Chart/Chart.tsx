@@ -5,10 +5,9 @@ import HighchartsReact from 'highcharts-react-official'
 type Props = {
   populationData:
     | {
-        year: number
+        year: string
         value: number
       }[]
-    | any
   prefName: string
 }
 export const Chart: FC<Props> = (props) => {
@@ -16,7 +15,7 @@ export const Chart: FC<Props> = (props) => {
   const populationValue: Array<number> = []
   const Date: Array<string> = []
   if (populationData.length > 0) {
-    populationData.forEach((data: { year: number; value: number }) => {
+    populationData.forEach((data: { year: string; value: number }) => {
       populationValue.push(data.value)
       Date.push(data.year.toString())
     })
