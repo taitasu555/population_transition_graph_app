@@ -28,6 +28,5 @@ describe('home page test', () => {
     expect(screen.getByText('都道府県人口推移グラフ')).toBeInTheDocument()
     expect(await screen.findByText('北海道')).toBeInTheDocument()
     expect(screen.getByText('Author by Taishin')).toBeInTheDocument()
-    screen.debug()
   })
 })
