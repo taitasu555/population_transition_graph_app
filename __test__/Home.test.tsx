@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import Home from '../src/pages/index'
+import userEvent from '@testing-library/user-event'
 
-it('Should render home page', () => {
-  render(<Home />)
-  expect(screen.getByText('Loading now...')).toBeInTheDocument()
+describe('home page test', () => {
+  it('Should render Home', () => {
+    render(<Home />)
+    expect(screen.getByText('Loading now...')).toBeInTheDocument()
+  })
 })

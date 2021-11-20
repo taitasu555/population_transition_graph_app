@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState, memo } from 'react'
-import { prefecture } from '../../types/types'
+import { PrefectureType } from '../../types/types'
 import styles from '../../styles/components/prefectureList.module.css'
 import { Chart } from '../Chart/Chart'
 import { getChart } from '../../lib/fetch'
 
 type Props = {
-  prefectures: prefecture[]
+  prefectures: PrefectureType[]
 }
 
 export const PrefecturesList: FC<Props> = memo((props) => {

@@ -15,3 +15,10 @@ export const getChart = async (prefectureCode: number) => {
   )
   return response.data.result.data[0].data
 }
+
+export  const getPrefectures = async () => {
+  const response = await axios.get(`${APIURL}/api/v1/prefectures`, {
+    headers,
+  })
+  return response.data.result
+}

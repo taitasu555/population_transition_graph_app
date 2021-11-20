@@ -1,29 +1,27 @@
 import type { NextPage } from 'next'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Header } from '../components/Header/Header'
 import styles from '../styles/Home.module.css'
-import useSWR from 'swr'
-import { APIURL } from '../common/const'
-import axios from 'axios'
 import { PrefecturesList } from '../components/List/PrefecturesList'
 import { Footer } from '../components/Footer/Footer'
-import { Headers } from '../types/types'
+import { getPrefectures } from '../lib/fetch'
+import { PrefectureType } from '../types/types'
 
 const Home: NextPage = () => {
-  const headers: Headers = {
-    'X-API-KEY': process.env.NEXT_PUBLIC_API_KEY,
-  }
-  const fetcher = async (url: string) =>
-    await axios.get(url, { headers: headers }).then((res) => res.data)
-
-  const { data, error } = useSWR(`${APIURL}/api/v1/prefectures`, fetcher)
-  if (error) return <div className={styles.caution}>failed to load</div>
-  if (!data) return <div className={styles.caution}>Loading now...</div>
+  const [prefectures, setPrefectures] = useState<any>([])
+  useEffect(() => {
+    ;(async () => {
+      const data = await getPrefectures()
+      console.log(data)
+      setPrefectures(data)
+    })()
+  }, [])
+  if (prefectures.length == 0) return <div className={styles.caution}>Loading now...</div>
   return (
     <div>
       <Header title={'都道府県人口推移グラフ'} />
       <main className={styles.main}>
-        <PrefecturesList prefectures={data.result} />
+        <PrefecturesList prefectures={prefectures} />
       </main>
       <Footer />
     </div>
