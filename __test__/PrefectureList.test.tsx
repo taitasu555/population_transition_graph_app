@@ -5,7 +5,7 @@ import { PrefecturesList } from '../src/components/List/PrefecturesList'
 afterEach(() => cleanup())
 
 describe('home page test', () => {
-  it('Should render PrefectureList', () => {
+  it('Should render PrefectureList correctly', () => {
     const data = [
       {
         prefCode: 1,
@@ -22,19 +22,4 @@ describe('home page test', () => {
   })
 })
 
-describe('useEffect rendering', () => {
-  it('should render only after async function resolved', async () => {
-    const data = [
-      {
-        prefCode: 1,
-        prefName: '北海道',
-      },
-      {
-        prefCode: 2,
-        prefName: '青森',
-      },
-    ]
-    render(<PrefecturesList prefectures={data} />)
-    expect(await screen.findByText(/北海道/)).toBeInTheDocument()
-  })
-})
+describe('useEffect rendering', () => {})
