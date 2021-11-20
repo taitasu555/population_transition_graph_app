@@ -14,9 +14,8 @@ export const Chart: FC<Props> = (props) => {
   const populationValue: Array<number> = []
   const Date: Array<string> = []
   if (populationData.length > 0) {
-    populationData.forEach((data: { year: string; value: number }) => {
-      populationValue.push(data.value)
-      Date.push(data.year.toString())
+    populationData.map((data: { year: string; value: number }) => {
+      ;[...populationData, data.value, ...Date, data.year]
     })
   }
   const options: Highcharts.Options = {
