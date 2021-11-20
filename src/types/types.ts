@@ -3,6 +3,6 @@ export type PrefectureType = {
   prefName: string
 }
 
-export type Headers = {
+export type HeadersTypes = {
   'X-API-KEY'?: string
 }

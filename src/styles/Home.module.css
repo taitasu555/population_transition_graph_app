@@ -9,6 +9,20 @@
   min-height: 100vh;
 }
 
+.header {
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #fafafa;
+  border-bottom: 3px solid #eaeaea;
+}
+
+.headerTitle {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -16,13 +30,4 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
-}
-
-.caution {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  min-height: 100vh;
 }
