@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
@@ -9,15 +9,17 @@ type Props = {
   }[]
   prefName: string
 }
-export const Chart: FC<Props> = (props) => {
+// eslint-disable-next-line react/display-name
+export const Chart: FC<Props> = memo((props) => {
   const { populationData, prefName } = props
-  const populationValue: Array<number> = []
-  const Date: Array<string> = []
-  if (populationData.length > 0) {
-    populationData.map((data: { year: string; value: number }) => {
-      ;[...populationData, data.value, ...Date, data.year]
-    })
-  }
+
+  const populationValue: number[] = populationData.map((data) => {
+    return data.value
+  })
+  const years: string[] = populationData.map((data) => {
+    return data.year
+  })
+
   const options: Highcharts.Options = {
     title: {
       text: '総人口推移グラフ',
@@ -26,7 +28,7 @@ export const Chart: FC<Props> = (props) => {
       title: {
         text: '年度',
       },
-      categories: Date,
+      categories: years,
     },
     yAxis: {
       title: {
@@ -46,4 +48,4 @@ export const Chart: FC<Props> = (props) => {
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )
-}
+})
